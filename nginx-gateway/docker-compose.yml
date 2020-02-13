@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:${NGINX_VERSION}
+    container_name: ${NGINX_CONTAINER_NAME}
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - "./conf.d:/etc/nginx/conf.d"
+      - "./cert:/etc/cert"
+
+networks:
+  default:
+    external:
+      name: ${NETWORK}

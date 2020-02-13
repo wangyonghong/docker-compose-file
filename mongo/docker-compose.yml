@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:${MONGO_VERSION}
+    container_name: ${MONGO_CONTAINER_NAME}
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME:
+      MONGO_INITDB_ROOT_PASSWORD:
+    ports:
+    - "${MONGO_PORT:-27017}:27017"
+    volumes:
+    - "./data:/data/db"
+
+  mongo-express:
+    image: mongo-express:${MONGO_EXPRESS_VERSION}
+    container_name: ${MONGO_EXPRESS_CONTAINER_NAME}
+    restart: always
+    ports:
+    - "${MONGO_EXPRESS_PORT:-8081}:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME:
+      ME_CONFIG_MONGODB_ADMINPASSWORD:
+      ME_CONFIG_BASICAUTH_USERNAME:
+      ME_CONFIG_BASICAUTH_PASSWORD:
+
+networks:
+  default:
+    external:
+      name: ${NETWORK}
