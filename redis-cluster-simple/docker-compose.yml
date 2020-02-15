@@ -1,0 +1,20 @@
+version: '3'
+services:
+  redis:
+    image: redis:${REDIS_VERSION}
+    command: redis-server /data/redis.conf
+    ports:
+    - "36380:6380"
+    volumes:
+    - ./data/redis:/data
+  redis-sentinel:
+    image: redis:${REDIS_VERSION}
+    command: redis-server /data/redis-sentinel.conf --sentinel
+    ports:
+    - "26380:26380"
+    volumes:
+    - ./data/redis-sentinel:/data
+networks:
+  default:
+    external:
+      name: ${NETWORK}
