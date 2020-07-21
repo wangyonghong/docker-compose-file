@@ -1,0 +1,17 @@
+version: "3"
+services: 
+  activemq:
+    image: sourcegraph/server:3.17.3
+    container_name: docker-lab-sourcegraph
+    restart: always
+    ports:
+    - "7080:7080"
+    - "3370:3370"
+    volumes:
+    - "./conf:/etc/sourcegraph"
+    - "./data:/var/opt/sourcegraph"
+
+networks:
+  default:
+    external:
+      name: docker-lab
