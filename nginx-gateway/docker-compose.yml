@@ -1,8 +1,8 @@
 version: '3'
 services:
   nginx:
-    image: nginx:${NGINX_VERSION}
-    container_name: ${NGINX_CONTAINER_NAME}
+    image: nginx:1.18-alpine
+    container_name: nginx-1.18
     restart: always
     ports:
       - '80:80'
@@ -14,4 +14,4 @@ services:
 networks:
   default:
     external:
-      name: ${NETWORK}
+      name: docker-lab

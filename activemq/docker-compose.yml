@@ -1,0 +1,17 @@
+version: "3"
+services: 
+  activemq:
+    image: yonghongwang/activemq:5.16.0
+    container_name: docker-lab-activemq
+    restart: always
+    ports:
+    - "5672:5672"
+    - "8161:8161"
+    volumes:
+    - "./conf:/opt/activemq/conf"
+    - "./data:/opt/activemq/data"
+
+networks:
+  default:
+    external:
+      name: docker-lab

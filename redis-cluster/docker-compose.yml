@@ -1,7 +1,7 @@
 version: '3'
 services:
   redis-sentinel-0:
-    image: redis:${REDIS_VERSION}
+    image: redis:6
     container_name: redis-sentinel-0
     command: redis-server /data/redis-sentinel.conf --sentinel
     ports:
@@ -9,7 +9,7 @@ services:
     volumes:
     - ./data/sentinel-0:/data
   redis-sentinel-1:
-    image: redis:${REDIS_VERSION}
+    image: redis:6
     container_name: redis-sentinel-1
     command: redis-server /data/redis-sentinel.conf --sentinel
     ports:
@@ -17,7 +17,7 @@ services:
     volumes:
     - ./data/sentinel-1:/data
   redis-sentinel-2:
-    image: redis:${REDIS_VERSION}
+    image: redis:6
     container_name: redis-sentinel-2
     command: redis-server /data/redis-sentinel.conf --sentinel
     ports:
@@ -25,7 +25,7 @@ services:
     volumes:
     - ./data/sentinel-2:/data
   redis-master-0:
-    image: redis:${REDIS_VERSION}
+    image: redis:6
     container_name: redis-master-0
     command: redis-server /data/redis-master.conf
     ports:
@@ -33,7 +33,7 @@ services:
     volumes:
     - ./data/master-0:/data
   redis-slave-0:
-    image: redis:${REDIS_VERSION}
+    image: redis:6
     container_name: redis-slave-0
     command: redis-server /data/redis-slave.conf
     ports:
@@ -41,7 +41,7 @@ services:
     volumes:
     - ./data/slave-0:/data
   redis-slave-1:
-    image: redis:${REDIS_VERSION}
+    image: redis:6
     container_name: redis-slave-1
     command: redis-server /data/redis-slave.conf
     ports:
@@ -52,4 +52,4 @@ services:
 networks:
   default:
     external:
-      name: ${NETWORK}
+      name: docker-lab

@@ -4,7 +4,7 @@ services:
     image: mysql:5.7
     container_name: mysql57
     environment: 
-      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 123456
     ports:
       - "3307:3306"
     volumes:
@@ -14,4 +14,4 @@ services:
 networks:
   default:
     external:
-      name: ${NETWORK}
+      name: docker-lab
